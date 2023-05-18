@@ -4,6 +4,11 @@ import java.util.Collection;
 import java.util.ArrayList;
 import com.cursoceat.modell.Persona;
 import java.util.List;
+
+import javax.naming.ldap.ExtendedRequest;
+
+import java.util.Iterator;
+
 public class Controller {
 
 	public static void main(String[] args) {
@@ -52,6 +57,33 @@ public class Controller {
 		Persona p4= new Persona("María", "06457473c","10-12-1990");
 		miColeccionPer.add(p4);
 		System.out.println(miColeccionPer.toString());
+		
+		//volvemos a cargar los elementos de la lista
+		miColeccionPer.add(p1);
+		miColeccionPer.add(p2);
+		miColeccionPer.add(p3);
+		System.out.println(miColeccionPer);
+	
+		//recorrer elemento a elemento por medio de forEach
+		//no permite metodos sobre los elementos que recorre
+		for(Persona p: miColeccionPer) {
+			System.out.println(p.getNombre());
+		}
+		//recorrer la coleccion, permite borrar un elemento si cumple una condicion
+		//objeto interactor que permite ir apuntando por medio del metodo hasNext si exite elemento siguientes
+		//y el metodo next() va avanzando por cada uno de los elementos
+		
+		Iterator<Persona> it=miColeccionPer.iterator();
+		while(it.hasNext()) {
+			Persona persona= it.next();//se guarda en persona ese objeto apuntado
+			if (persona.getDni().equals("06454586q")) {
+				it.remove();
+			
+			
+			}
+		}
+		System.out.println(miColeccionPer);
+	
 	}
 
 }
