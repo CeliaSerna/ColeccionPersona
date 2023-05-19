@@ -2,6 +2,8 @@ package com.cursoceat.controller;
 
 import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import com.cursoceat.modell.Persona;
 import java.util.List;
 
@@ -83,6 +85,43 @@ public class Controller {
 			}
 		}
 		System.out.println(miColeccionPer);
+	
+		//crear nueva coleccion
+		Collection<Persona> nuevaCole=new ArrayList<>();
+		nuevaCole.add(p1);
+		nuevaCole.add(p3);
+		System.out.println(nuevaCole);
+		
+		//todo lo que tenga la coleccion nueva tiene que estar en la vieja para dar true
+		boolean respuesta=miColeccionPer.containsAll(nuevaCole);
+		boolean respuesta2=nuevaCole.containsAll(miColeccionPer);
+		
+		
+		System.out.println("¿La coleccion 1 tiene los elementos de la coleccion 2? "+respuesta);
+		System.out.println("¿La coleccion 2 tiene los elementos de la coleccion 1? "+respuesta2);
+		////////////////
+		System.out.println("la coleccion tiene "+ miColeccionPer.size() + " elementos");
+		miColeccionPer.addAll(nuevaCole);
+		System.out.println("la coleccion tiene "+ miColeccionPer.size() + " elementos");
+		miColeccionPer.removeAll(nuevaCole);
+		
+		System.out.println("la coleccion tiene "+ miColeccionPer.size() + " elementos");
+		System.out.println(miColeccionPer);
+		///////////////////////////////////////////////////
+		//Crear un array a partir de una coleccion 
+		Persona[] n = miColeccionPer.toArray(new Persona[0]);
+		System.out.println(n[0].getDni());
+		//crear una coleccion a partir de un array
+		//la lista es inmutable, no se puede cambiar,
+		//ni eliminar ni insertar
+		
+		//creando la coleccion 1º no inmutable
+		Collection<Persona> desdeArray = new ArrayList<>();
+		desdeArray.addAll(Arrays.asList(n));
+		System.out.println(desdeArray);
+		
+		desdeArray.add(new Persona("Celia","70504050w","15-09-1990"));
+		System.out.println(desdeArray);
 	
 	}
 
