@@ -25,8 +25,13 @@ public class ControllerSet {
 	/**ahora ingresamos otra vez uno de los que ya teniamos en el conjunto **/
 		
 		boolean ins= miColeccion.add(p2);
-		System.out.println("¿Se inserto? "+ ins);	
+		System.out.println(miColeccion);
+		System.out.println("¿Se insertó? "+ ins);	
 		
+		Set<Persona> miColeccion2= new TreeSet<>();
+		miColeccion2.add(p1);
+		miColeccion2.add(p2);
+		miColeccion2.add(p3);
 	
 	
 	
