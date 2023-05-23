@@ -1,9 +1,13 @@
 package com.cursoceat.modell;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
-public class Persona {
+
+
+public class Persona implements Comparable<Persona> {
 
 	
 	static int idT;
@@ -11,7 +15,7 @@ public class Persona {
 	private String nombre;
 	private String dni;
 	private LocalDate fechaNaci;
-	
+	private Integer edad;
 	
 	public Persona(String nombre, String dni, String fechaNaci) {
 		
@@ -20,6 +24,7 @@ public class Persona {
 		this.id= ++idT;
 		DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		this.fechaNaci = LocalDate.parse(fechaNaci, formato);
+	    this.edad=edad();
 	}
 	
 	
@@ -58,16 +63,34 @@ public class Persona {
 		this.fechaNaci = fechaNaci;
 	}
 	
+	public int edad() {
+		return (int)fechaNaci.until(LocalDate.now(), ChronoUnit.YEARS);
+	}
+	
 	@Override
 	public String toString() {
-		return "Persona [id=" + id + ", nombre=" + nombre + ", dni=" + dni + ", fechaNaci=" + fechaNaci + "]";
+		return "Persona [id=" + id + ", nombre=" + nombre + ", dni=" + dni + ", fechaNaci=" + fechaNaci + "]\n";
 	}
+	
 	
 	//metodo que compara dos objetos y decide si son iguales, true si son iguales
 	@Override
 	public boolean equals(Object objeto) {
 		return dni.equals(((Persona)objeto).dni);
 	}
-	
-	
+  
+	@Override
+	public int compareTo(Persona o) {
+		return edad.compareTo(o.edad);
+	}
+/**
+	@Override
+	public int compareTo(Persona o) {
+		
+		return dni.compareTo(o.dni);
+	}
+	public int compareTo(Persona o) {
+		return nombre.compareTo(o.nombre);
+	}
+	**/
 }
