@@ -70,13 +70,18 @@ public class ControllerCollections {
 	
 	//copiar una lista dentro de otra
 	List<Persona> copia=new ArrayList<>();
-	copia.add(p6);
-	
+	for(int i=0; i<lista.size(); i++) {
+	copia.add(p1);
+	}
 	Collections.copy(lista, copia);
 	System.out.println("Vemos la copia \n" + lista);
 	
+	//shufle barajea de forma aleatoria
+	Collections.shuffle(copia);
+	System.out.println("Barajeado \n"+copia);
 	
-	
+	//buscar cuantas veces se repite un elemento
+	System.out.println("Frecuencia de p1 --> "+Collections.frequency(copia, p1));
 	
 	}
 
