@@ -5,11 +5,8 @@ import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-
-
 public class Persona implements Comparable<Persona> {
 
-	
 	static int idT;
 	private int id;
 	private String nombre;
@@ -63,13 +60,13 @@ public class Persona implements Comparable<Persona> {
 		this.fechaNaci = fechaNaci;
 	}
 	
-	public int edad() {
+	public Integer edad() {
 		return (int)fechaNaci.until(LocalDate.now(), ChronoUnit.YEARS);
 	}
 	
 	@Override
 	public String toString() {
-		return "Persona [id=" + id + ", nombre=" + nombre + ", dni=" + dni + ", fechaNaci=" + fechaNaci + "]\n";
+		return "Persona [id=" + id + ", nombre=" + nombre + ", dni=" + dni + ", fechaNaci=" + fechaNaci + " Edad= "+edad+ "]\n";
 	}
 	
 	
